@@ -210,6 +210,9 @@ class GigE_V_VideoCapture(object):
             gevapi.GevReleaseImage(self._camera, buf)
             raise Exception("Unknown image format")
 
+    def __del__(self):
+        self.release()
+
 @atexit.register
 def _rpi_gige_v_framework_cleanup():
     
